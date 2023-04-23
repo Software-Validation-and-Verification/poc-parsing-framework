@@ -421,7 +421,6 @@ const parseMethodBody = (
             case "return": {
               const openingBackTick = idx + 1;
               let closingBackTick = openingBackTick + contentArr.slice(openingBackTick + 1).indexOf("`") + 1;
-
               const fullReturnStatement = contentArr.slice(
                 openingBackTick,
                 closingBackTick + 1
