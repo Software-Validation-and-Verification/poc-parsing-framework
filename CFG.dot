@@ -1,5 +1,0 @@
-digraph G {
-  "Pet_cry" [ label = "Pet.cry()" ];
-  "User_makePetCry" [ label = "User.makePetCry()" ];
-  "User_makePetCry" -> "Pet_cry";
-}
