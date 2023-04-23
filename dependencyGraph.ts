@@ -1,4 +1,4 @@
-export interface ClassFormat {
+ export interface ClassFormat {
   dependencies: classDependency[]
   attributes: ClassAttribute[]
   method?: ClassMethod;
