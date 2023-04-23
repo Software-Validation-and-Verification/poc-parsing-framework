@@ -17,7 +17,28 @@ describe('Pet class', () => {
 
 
  
- ,	test('ensure cry method does not return a cavapoo related value if breed is not cavapoo', async () => {
+ ,	test('ensure cry method returns a canine related value if breed is canine', async () => {
+        const { sut } = makeSut(name,'canine')
+        let result = sut.cry(sound)
+        expect(result).toBe(`${name}says:${sound}!`)
+        })
+
+
+ ,	test('ensure cry method returns a poodles related value if breed is poodles', async () => {
+        const { sut } = makeSut(name,'poodles')
+        let result = sut.cry(sound)
+        expect(result).toBe(`${name}says:${sound}!`)
+        })
+
+
+ ,	test('ensure cry method returns a bulldogs related value if breed is bulldogs', async () => {
+        const { sut } = makeSut(name,'bulldogs')
+        let result = sut.cry(sound)
+        expect(result).toBe(`${name}says:${sound}!`)
+        })
+
+
+ ,	test('ensure cry method does not return a bulldogs related value if breed is not bulldogs', async () => {
         const { sut } = makeSut(name,breed)
         let result = sut.cry(sound)
         expect(result).toBe(`${name}says:${sound}raaar!`)

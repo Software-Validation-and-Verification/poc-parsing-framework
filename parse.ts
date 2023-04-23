@@ -371,6 +371,40 @@ const parseMethodBody = (
             }
 
             idx = openingCurlyBracket;
+          } else if ( contentArr[idx] == "else" && contentArr[idx + 1] == "if" ) {
+            // Find the positions of the closing parenthesis and opening curly bracket for the 'else if' block
+            let closingParenthesis = contentArr.indexOf(")", idx);
+            let openingCurlyBracket = contentArr.indexOf("{", closingParenthesis);
+
+            // Extract the full 'else if' control statement from contentArr
+            let fullElseIfControlStatement = contentArr.slice(
+              idx + 3,
+              closingParenthesis
+            );
+
+            let isAssertionSubject = true;
+
+            // Extract assertion subject, value, and comparison operand from the 'else if' condition
+            for (let j = 0; j < fullElseIfControlStatement.length; j++) {
+              if (!conditionalOperators.test(fullElseIfControlStatement[j])) {
+                if (isAssertionSubject) {
+                  if (/this.*/.test(fullElseIfControlStatement[j])) {
+                    assertionSubject = fullElseIfControlStatement[j].replace(
+                      /this./,
+                      ""
+                    );
+                  }
+                } else {
+                  assertionValue = fullElseIfControlStatement[j];
+                }
+              } else {
+                comparisonOperand = fullElseIfControlStatement[j];
+                isAssertionSubject = !isAssertionSubject;
+              }
+            }
+
+            // Update the idx to the position of the opening curly bracket of the 'else if' block
+            idx = openingCurlyBracket;
           } else if (contentArr[idx] === "else") {
             switch (comparisonOperand) {
               case "===":

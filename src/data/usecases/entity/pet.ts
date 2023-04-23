@@ -5,7 +5,17 @@ export class Pet {
   cry(sound:string):string {
     if (this.breed === 'cavapoo') {
       return `${this.name}says:${sound}!`
-    } else {
+    }
+    else if (this.breed === 'canine') {
+      return `${this.name}says:${sound}!`
+    }
+    else if (this.breed === 'poodles') {
+      return `${this.name}says:${sound}!`
+    }
+    else if (this.breed === 'bulldogs') {
+      return `${this.name}says:${sound}!`
+    }
+    else {
       return `${this.name}says:${sound}raaar!`
     }
   }
