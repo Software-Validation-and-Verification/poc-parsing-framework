@@ -36,7 +36,7 @@ const methodValidators: RegexValidator[] = [
   // add validators for more control flow statements, and other constructs you can think of
 ];
 
-const testCases: string[] = [];
+let testCases: string[] = [];
 let filePathName: string;
 let fileName: string;
 
@@ -48,7 +48,7 @@ interface TestCaseInterface {
   testcase :String
 }
 
-const TestCasesArray : TestCaseInterface[]= []
+let TestCasesArray : TestCaseInterface[]= []
 
 
 export const parseFile = (filePath: string) => {
@@ -88,6 +88,10 @@ export const parseFile = (filePath: string) => {
       name: "method",
     },
   ];
+
+  TestCasesArray = [];
+  testCases = [];
+  FunctionNames = [];
 
   recursivelyValidate(contentArr, validators);
 };
@@ -617,8 +621,7 @@ const createTestCase = (
 };
 
 const createTestFile = (className: string, entity: ClassFormat) => {
-
-  const parameters = entity.attributes
+  const parameters = entity.attributes  
     .map((attribute) => attribute.name + ": " + attribute.type)
     .join(",");
   const attributes = entity.attributes

@@ -36,4 +36,4 @@ readRecursively("");
 console.log('\nDependency grahp: ', JSON.stringify(dependencyGraph, null, 2))
 
 console.log('\nRunning test cases...')
-execSync('npm run test')
+execSync('jest --passWithNoTests --no-cache --runInBand')
